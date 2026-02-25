@@ -72,12 +72,12 @@ class TrainDataset(Dataset):
         self.tokenizer = tokenizer
 
 
-        json_path='data/llava_instruct_150k_aokvqa12k.json'
+        json_path='/data/zhangst/data/LLaVA-Instruct-150K/llava_instruct_150k_aokvqa12k.json'
 
         with open(json_path,'r') as f:
             samples = json.load(f)
         
-        image_root_path='raw_images/coco/train2017'
+        image_root_path='/data/zhangst/data/LLaVA-Instruct-150K/train2017'
         
         self.samples=[]
         for i,sample in enumerate(samples):
@@ -417,8 +417,8 @@ if __name__ == '__main__':
 
 
 
-    llama2_path='Llama-2-7b-chat-hf'
-    vit_path='clip-vit-large-patch14'
+    llama2_path = '/data/zhangst/project/moka/pre-train/Llama-2-7b-chat-hf'
+    vit_path = '/data/zhangst/project/moka/pre-train/clip-vit-large-patch14'
 
     
     
@@ -433,7 +433,7 @@ if __name__ == '__main__':
 
     
     print('Loading tokenizer from LLaMA...')
-    tokenizer = AutoTokenizer.from_pretrained('Llama-2-7b-chat-hf', trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(llama2_path, trust_remote_code=True)
 
     print('tokenizer.vocab_size',tokenizer.vocab_size)
     print('llm_config.vocab_size',llm_config.vocab_size)
@@ -465,7 +465,7 @@ if __name__ == '__main__':
         'image_token_nums':256,
         'num_query_token':32,
         'num_hidden_layers':2,
-        'bert_ckpt_path':'bert-base-uncased'
+        'bert_ckpt_path':'/data/zhangst/project/moka/pre-train/bert-base-uncased'
     }
 
     
@@ -492,7 +492,7 @@ if __name__ == '__main__':
     print('resize token embeddings finished...')
 
 
-    visual_adapter_path='visual_pretrain.bin'
+    visual_adapter_path='/data/zhangst/project/moka/pre-train/moka_projectors/visual_pretrain.bin'
     state_dict = torch.load(visual_adapter_path, map_location='cpu')
     embed_tokens_weight = state_dict.pop('model.embed_tokens.weight')
     
