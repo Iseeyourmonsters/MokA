@@ -80,7 +80,7 @@ torchrun --nproc_per_node=1 \
   --master_port=29500 \
   train/train.py \
   --output_dir ${OUTPUT_DIR} \
-  --fp16 True \
+  --bf16 True \
   --num_train_epochs 2 \
   --per_device_train_batch_size 1 \
   --gradient_accumulation_steps 4 \
