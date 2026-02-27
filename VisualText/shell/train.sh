@@ -82,6 +82,7 @@ torchrun --nproc_per_node=1 \
   --num_train_epochs 2 \
   --per_device_train_batch_size 1 \
   --gradient_accumulation_steps 4 \
+  --dataloader_num_workers 4 \
   --eval_strategy "no" \
   --save_strategy "steps" \
   --save_steps 0.1 \
