@@ -49,10 +49,8 @@ export CUDA_VISIBLE_DEVICES=0
 
 export PYTHONPATH="${PYTHONPATH}:$(pwd)"
 
-set -a           # 开启自动导出模式
-source ../../.env # 加载 .env 文件（请根据实际相对路径修改）
-set +a           # 关闭自动导出模式
-
+#export WANDB_MODE=offline
+WANDB_API_KEY="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"
 wandb login --relogin $WANDB_API_KEY
 
 
