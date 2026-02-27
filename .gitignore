@@ -1,4 +1,4 @@
 .gitignore
 .idea
 .env
-./VisualText/wandb
+./VisualText/wandb/
