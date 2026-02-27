@@ -5,7 +5,7 @@ os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 os.environ["HF_HOME"] = "/data/zhangst/project/moka/hf_cache"
 
 from dotenv import load_dotenv
-from huggingface_hub import snapshot_download
+from huggingface_hub import snapshot_download, hf_hub_download
 
 # 你的 Hugging Face Token (务必替换！)
 # 加载 .env 文件中的环境变量
@@ -47,3 +47,14 @@ snapshot_download(
     resume_download=True
 )
 print("✅ BERT 下载完成！")
+
+print("🚀 开始下载 Visual Projector 权重...")
+# 使用 hf_hub_download 单独下载指定文件，享受镜像加速和断点续传
+hf_hub_download(
+    repo_id="ahsgdxhs/Crab",
+    filename="visual_pretrain.bin",
+    local_dir=f"{TARGET_DIR}/moka_projectors",
+    local_dir_use_symlinks=False,
+    resume_download=True
+)
+print("✅ Visual Projector 权重下载完成！\n")
